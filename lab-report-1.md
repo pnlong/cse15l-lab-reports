@@ -8,7 +8,7 @@ I learned some new basic filesystem commands in lecture today. I will detail the
 
 `cd` is short for "change directory". As its name suggests, it changes the user's current working directory. Here are some examples:
 
-- Here, I call `cd` alone from */home/lecture1*. It changed my working directory from */home/lecture1* to */home*, my home directory.
+- Here, I call `cd` alone from */home/lecture1*. It changed my working directory from */home/lecture1* to */home*, my home directory. I suspect that calling `cd` without any arguments implicitly calls `cd ~` under the hood, where the `~` symbol represents the home directory. In otherwords, calling `cd` alone brings the user back to the home directory. This is not an error, and it's actually a pretty neat trick to quickly return to the home directory!
 
 ```
 [user@sahara ~/lecture1]$ pwd
@@ -18,7 +18,7 @@ I learned some new basic filesystem commands in lecture today. I will detail the
 /home
 ```
 
-- Here, I call `cd lecture1` from */home*. It changed my working directory from */home* to */home/lecture1*.
+- Here, I call `cd lecture1` from */home*. It changed my working directory from */home* to */home/lecture1*. Note that *lecture1* is a directory within the */home* directory. When calling `cd` with a directory as an argument, it works as expected, changing the user's working directory to the provided directory. This is the correct usage of the `cd` command. This is not an error.
 
 ```
 [user@sahara ~]$ pwd
@@ -28,7 +28,7 @@ I learned some new basic filesystem commands in lecture today. I will detail the
 /home/lecture1
 ```
 
-- Here, I call `cd Hello.java` from */home/lecture1*.
+- Here, I call `cd Hello.java` from */home/lecture1*, where *Hello.java* is a file in the directory */home/lecture1*. Passing a file path to the `cd` command is incorrect, as the `cd` command expects a directory (you can't change your directory to a file). Doing so caused the following error -- `bash: cd: Hello.java: Not a directory` -- which makes sense considering the usage of the `cd` command.
 
 ```
 [user@sahara ~/lecture1]$ pwd
