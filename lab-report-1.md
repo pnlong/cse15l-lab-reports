@@ -90,7 +90,7 @@ Hello.java
 ^C
 ```
 
-- Here, I call `cat lecture1` from */home*, where *lecture1* is a directory within the */home* directory. Passing a directory to the `cat` command doesn't make much sense, as the command is meant for printing out the contents of a file, not a directory. This is the incorrect usage of the `cat` command, and yields the error `cat: lecture1: Is a directory`. In short, don't pass a directory path to the `cat` command!
+- Here, I call `cat lecture1` from */home*, where *lecture1* is a directory within the */home* directory. Passing a directory to the `cat` command doesn't make much sense, as the command is meant for printing out the contents of a file, not a directory. This an error, as it is the incorrect usage of the `cat` command and yields the message `cat: lecture1: Is a directory`. In short, don't pass a directory path to the `cat` command!
 
 ```
 [user@sahara ~]$ pwd
@@ -99,7 +99,7 @@ Hello.java
 cat: lecture1: Is a directory
 ```
 
-- Here, I call `cat Hello.java` from */home/lecture1*, where *Hello.java* is a file in the directory */home/lecture1*. Passing a file path to `cat` is the correct usage of the command, as it expects a file path that it will print out. This is not an error, as this is the correct usage of the `cat` command.
+- Here, I call `cat Hello.java` from */home/lecture1*, where *Hello.java* is a file in the directory */home/lecture1*. Passing a file path to `cat` is the correct usage of the command, as it expects a file path whose contents it will print out. This is not an error, as this is the correct usage of the `cat` command.
 
 ```
 [user@sahara ~]$ pwd
