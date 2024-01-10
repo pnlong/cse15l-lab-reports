@@ -47,7 +47,7 @@ bash: cd: Hello.java: Not a directory
 
 `ls` is short for "list". It lists the contents of a directory. Here are some examples:
 
-- Here, I call `ls` alone from */home/lecture1*. It printed the contents (all of the files and subdirectories) of my current working directory. I suspect that calling `ls` without any arguments implicitly calls `ls .` under the hood, where the `.` symbol represents the current working directory. In simple terms, calling `ls` alone prints out the contents of the working directory. This is not an error, and it's a very useful feature I could imagine using on a daily basis.
+- Here, I call `ls` alone from */home/lecture1*. It printed the contents (all of the files and subdirectories) of my current working directory. I suspect that calling `ls` without any arguments implicitly calls `ls .` under the hood, where the `.` symbol represents the current working directory. In simple terms, calling `ls` alone prints out the contents of the working directory. This is not an error, and it's a very useful feature that I could imagine using on a daily basis.
 
 ```
 [user@sahara ~/lecture1]$ pwd
@@ -80,16 +80,17 @@ Hello.java
 
 `cat` is short for "concatenate". It writes the contents of a file to the standard output (or a specific filepath when `>` is used). Here are some examples:
 
-- Here, I call `cat` alone from */home/lecture1*. It did nothing, and the my terminal was stuck in stasis until I pressed `^C`. Calling `cat` without any arguments probably implicity trys to concatenate the current working directory, but because a directory does not contain any content in the way that a normal file does, the `cat` command is stuck constantly trying to figure out what to output. This is an error because calling `cat` alone causes the terminal to stall.
+- Here, I call `cat` alone from */home/lecture1*. It did nothing, and my terminal was stuck in stasis until I pressed `^C`. Calling `cat` without any arguments probably implicity trys to concatenate the current working directory, but because a directory does not contain any content in the way that a normal file does, the `cat` command is stuck constantly trying to figure out what to output. This is an error because calling `cat` alone causes the terminal to stall.
 
 ```
 [user@sahara ~/lecture1]$ pwd
 /home/lecture1
 [user@sahara ~/lecture1]$ cat
 
+^C
 ```
 
-- Here, I call `cat lecture1` from */home*, where *lecture1* is a directory within the */home* directory. Passing a directory to the `cat` command doesn't make much sense, as the command is meant for printing out the contents of a file. This is the incorrect usage of the `cat` command, and yields the error `cat: lecture1: Is a directory`.
+- Here, I call `cat lecture1` from */home*, where *lecture1* is a directory within the */home* directory. Passing a directory to the `cat` command doesn't make much sense, as the command is meant for printing out the contents of a file, not a directory. This is the incorrect usage of the `cat` command, and yields the error `cat: lecture1: Is a directory`. In short, don't pass a directory path to the `cat` command!
 
 ```
 [user@sahara ~]$ pwd
