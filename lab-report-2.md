@@ -87,11 +87,11 @@ Here are some examples of `ChatServer` in action.
 
 ![Example 1](./images/lab-report-2-ex1.png)
 
-Using this query calls the `handleRequest` method, which takes a `URI` object as an argument. This `URI` object holds the most recent request. Given the request `/add-message?s=Hello Friends!&user=Phillip`, `handleRequest` sees the path `add-message`, which tells the program to undertake a certain course of action, then checks to make sure the provided query `s=Hello Friends!&user=Phillip` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is updated with the new chat.
+Using this query calls the `handleRequest` method, which takes a `URI` object as an argument. This `URI` object holds the most recent request. Given the request `/add-message?s=Hello Friends!&user=Phillip`, `handleRequest` sees the path `add-message`, which tells the program to undertake a certain course of action, then checks to make sure the provided query `s=Hello Friends!&user=Phillip` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is updated with the new, correctly-formatted chat.
 
 ![Example 2](./images/lab-report-2-ex2.png)
 
-Using this query calls the `handleRequest` method as well, which, as mentioned previously, takes a `URI` object as an argument. Given the request `/add-message?s=ferrddaaaa buddy&user=Ferry`, `handleRequest` sees the path `add-message` and checks to make sure the provided query `s=ferrddaaaa buddy&user=Ferry` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is again updated with the new chat.
+Using this query calls the `handleRequest` method as well, which, as mentioned previously, takes a `URI` object as an argument. Given the request `/add-message?s=ferrddaaaa buddy&user=Ferry`, `handleRequest` sees the path `add-message` and checks to make sure the provided query `s=ferrddaaaa buddy&user=Ferry` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is again updated with the new formatted chat.
 
 ---
 
@@ -141,7 +141,7 @@ or "prep -h" for more options.
 
 ## Part 3: Reflection
 
-
+I did not know I could a create a web server in Java! I have absolutely no experience in web development, but this revelation makes me wonder if I could create a website entirely in Java. Also, I always see the word "port" being thrown around, and I finally understand what it means.
 
 ---
 
