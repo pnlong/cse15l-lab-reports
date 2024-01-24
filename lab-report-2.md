@@ -6,7 +6,7 @@ Today, I will be creating a Web Server and learning how to use `ssh`! Many fun a
 
 ## Part 1: Web Server
 
-Here, I write a web server called `ChatServer` that keeps track of a single string, which gets added to by incoming requests. Note that my code is located in the GitHub [wavelet](https://github.com/ucsd-cse15l-f23/wavelet) repository, which allows me to make use of Java classes such as `Server` and `URLHandler`.
+Here, I write a web server called `ChatServer` that keeps track of a single string, which gets added to by incoming requests. Note that I assume that my code is located in the GitHub [wavelet](https://github.com/ucsd-cse15l-f23/wavelet) repository, which allows me to make use of Java classes such as `Server` and `URLHandler`.
 
 First, I make some imports.
 
@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URI;
 ```
 
-Next, I implement a class called `ChatHandler`, which implements the interface `URLHandler` defined in the `wavelet` repository. This class includes a string called `chat` that keeps track of the chat thread, which is initialized to an empty string in the constructor. The main function of the `ChatHandler` class is to process various requests from a web server, which is what `handleRequest` deals with. Without any path, the web server will display the current state of `chat`. I can add messages to `chat` using `/add-message?s=<string>&user=<string>` -- my code makes sure that a user inputs a valid query. Unknown requests generate a `404 Not Found!` error, and entering the path `/help` provides a help message.
+Next, I implement a class called `ChatHandler`, which implements the interface `URLHandler` defined in the `wavelet` repository. This class includes a string called `chat` that keeps track of the chat thread, which is initialized to an empty string in the constructor. The main purpose of the `ChatHandler` class is to process various requests from a web server, which is what `handleRequest` deals with. Without any path, the web server will display the current state of `chat`. I can add messages to `chat` using `/add-message?s=<string>&user=<string>` -- my code makes sure that a user inputs a valid query. Unknown requests generate a `404 Not Found!` error, and entering the path `/help` provides a help message.
 
 ```java
 class ChatHandler implements URLHandler {
@@ -87,11 +87,11 @@ Here are some examples of `ChatServer` in action.
 
 ![Example 1](./images/lab-report-2-ex1.png)
 
-Using this query calls the `handleRequest` method, which takes a `URI` object as an argument. This `URI` object holds the most recent request. Given the request `/add-message?s=Hello Friends!&user=Phillip`, `handleRequest` sees the path `add-message`, which tells the program to undertake a certain course of action, then checks to make sure the provided query `s=Hello Friends!&user=Phillip` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is updated with the new, correctly-formatted chat.
+This request calls the `handleRequest` method, which takes the `URI` object `url` as an argument. This `URI` object holds the most recent request, and allows me to access information such as the request's path and query. Given the request `/add-message?s=Hello Friends!&user=Phillip`, `handleRequest` sees the path `add-message`, which tells the program to undertake a certain course of action, and then checks to make sure the provided query `s=Hello Friends!&user=Phillip` is valid. After all of this happens, the query, now stored as a string, is split up, formatted, and appended to the `chat` instance variable of the `ChatHandler` class. The current state of `chat` is then displayed.
 
 ![Example 2](./images/lab-report-2-ex2.png)
 
-Using this query calls the `handleRequest` method as well, which, as mentioned previously, takes a `URI` object as an argument. Given the request `/add-message?s=ferrddaaaa buddy&user=Ferry`, `handleRequest` sees the path `add-message` and checks to make sure the provided query `s=ferrddaaaa buddy&user=Ferry` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is again updated with the new formatted chat.
+This request calls the `handleRequest` method as well, which, as mentioned previously, takes the `URI` object `url` as an argument. Given the request `/add-message?s=ferrddaaaa buddy&user=Ferry`, `handleRequest` sees the path `add-message` and checks to make sure the provided query `s=ferrddaaaa buddy&user=Ferry` is valid. After all of this happens, the query (a string) is split-up and formatted. It is important that a `\n` character is added to the end of the new chat so that it appends well to the `chat` instance variable. Once again, the current, updated state of `chat` is displayed.
 
 ---
 
@@ -112,7 +112,7 @@ On my local drive...
 - the absolute path of the *private* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa`.
 - the absolute path of the *public* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa.pub`.
 
-Having set up my `ssh` keys, I can now easily log onto my `ieng6` account without entering my password! See below. Note that I was **not** prompted for a password.
+Having set up my `ssh` keys, I can now easily log onto my `ieng6` account without entering my password! See below. _Note that I was **not** prompted for a password._
 
 ```
 philliplong@Phillip-Longs-MacBook-Air ~ % ssh p1long@ieng6.ucsd.edu
@@ -141,7 +141,7 @@ or "prep -h" for more options.
 
 ## Part 3: Reflection
 
-I did not know I could a create a web server in Java! I have absolutely no experience in web development, but this revelation makes me wonder if I could create a website entirely in Java. Also, I always see the word "port" being thrown around, and I finally understand what it means.
+I did not know I could a create a web server in Java! I have absolutely no experience in web development, but this revelation makes me wonder if I could create a website entirely in Java. Can I? That'd be really cool. Though I have a gut feeling that Java, for a variety of reasons, isn't meant for web development. That's probably the reason for JavaScript. Also, I always see the word "port" being thrown around, so it is nice to finally understand what it means.
 
 ---
 
