@@ -1,1 +1,148 @@
 # Lab Report 2
+
+Today, I will be creating a Web Server and learning how to use `ssh`! Many fun activities lie on the road ahead!
+
+---
+
+## Part 1: Web Server
+
+Here, I write a web server called `ChatServer` that keeps track of a single string, which gets added to by incoming requests. Note that my code is located in the GitHub [wavelet](https://github.com/ucsd-cse15l-f23/wavelet) repository, which allows me to make use of Java classes such as `Server` and `URLHandler`.
+
+First, I make some imports.
+
+```java
+import java.io.IOException;
+import java.net.URI;
+```
+
+Next, I implement a class called `ChatHandler`, which implements the interface `URLHandler` defined in the `wavelet` repository. This class includes a string called `chat` that keeps track of the chat thread, which is initialized to an empty string in the constructor. The main function of the `ChatHandler` class is to process various requests from a web server, which is what `handleRequest` deals with. Without any path, the web server will display the current state of `chat`. I can add messages to `chat` using `/add-message?s=<string>&user=<string>` -- my code makes sure that a user inputs a valid query. Unknown requests generate a `404 Not Found!` error, and entering the path `/help` provides a help message.
+
+```java
+class ChatHandler implements URLHandler {
+
+    // internal String that stores the chat
+    String chat;
+
+    // constructor
+    ChatHandler() {
+        this.chat = "";
+    }
+
+    // handle requests
+    public String handleRequest(URI url) {
+        // default behavior is to display chat
+        if (url.getPath().equals("/")) {
+            return this.chat;
+        }
+        // add a new message to the chat
+        else if (url.getPath().equals("/add-message")) {
+            String query = url.getQuery(); // get the query
+            if (query == null) { // make sure query is valid
+                return "Invalid query...See usage:\n/add-message?s=<string>&user=<string>\n";
+            }
+            String[] arguments = query.split("&"); // get arguments
+            if (!(arguments[0].startsWith("s=") && arguments[1].startsWith("user="))) { // make sure query is valid
+                return "Invalid query...See usage:\n/add-message?s=<string>&user=<string>\n";
+            }
+            this.chat += String.format("%s: %s\n", arguments[1].split("=")[1], arguments[0].split("=")[1]); // concatenate to chat
+            return this.chat; // output chat
+        }
+        // help message
+        else if (url.getPath().equals("/help")) {
+            return "Welcome to ChatServer! Try add-message?s=<string>&user=<string> to add a chat.\n";
+        }
+        // unknown path
+        else {
+            return "404 Not Found!\n";
+        }
+    }
+}
+```
+
+Lastly, I implement the `ChatServer` class itself, which creates the actual web server. The program is pretty simple: it checks to make sure the user provides a port and then creates a server on that port.
+
+```java
+class ChatServer {
+    public static void main(String[] args) throws IOException {
+
+        // make sure port is supplied
+        if(args.length == 0) {
+            System.out.println("Missing port number! Try any number between 1024 to 49151");
+            return;
+        }
+
+        // get the port
+        int port = Integer.parseInt(args[0]);
+
+        // create a web server
+        Server.start(port, new ChatHandler());
+
+    }
+}
+```
+
+### Examples
+
+Here are some examples of `ChatServer` in action.
+
+![Example 1](./images/lab-report-2-ex1.png)
+
+Using this query calls the `handleRequest` method, which takes a `URI` object as an argument. This `URI` object holds the most recent request. Given the request `/add-message?s=Hello Friends!&user=Phillip`, `handleRequest` sees the path `add-message`, which tells the program to undertake a certain course of action, then checks to make sure the provided query `s=Hello Friends!&user=Phillip` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is updated with the new chat.
+
+![Example 2](./images/lab-report-2-ex2.png)
+
+Using this query calls the `handleRequest` method as well, which, as mentioned previously, takes a `URI` object as an argument. Given the request `/add-message?s=ferrddaaaa buddy&user=Ferry`, `handleRequest` sees the path `add-message` and checks to make sure the provided query `s=ferrddaaaa buddy&user=Ferry` is valid. After all of this happens, the `chat` instance variable of the `ChatHandler` class is again updated with the new chat.
+
+---
+
+## Part 2: SSH
+
+Observe the `.ssh` directory on my local drive:
+
+```
+philliplong@Phillip-Longs-MacBook-Air ~ % pwd
+/Users/philliplong
+philliplong@Phillip-Longs-MacBook-Air ~ % ls ~/.ssh
+config          id_ed25519      id_ed25519.pub  id_rsa          id_rsa.pub      known_hosts     known_hosts.old
+philliplong@Phillip-Longs-MacBook-Air ~ % ls /Users/philliplong/.ssh
+config          id_ed25519      id_ed25519.pub  id_rsa          id_rsa.pub      known_hosts     known_hosts.old
+```
+
+On my local drive...
+- the absolute path of the *private* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa`.
+- the absolute path of the *public* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa.pub`.
+
+Having set up my `ssh` keys, I can now easily log onto my `ieng6` account without entering my password! See below. Note that I was **not** prompted for a password.
+
+```
+philliplong@Phillip-Longs-MacBook-Air ~ % ssh p1long@ieng6.ucsd.edu
+Last login: Wed Jan 24 10:47:52 2024 from 100.81.37.193
+Hello p1long, you are currently logged into ieng6-202.ucsd.edu
+
+You are using 0% CPU on this system
+
+Cluster Status 
+Hostname     Time    #Users  Load  Averages  
+ieng6-201   10:45:01   23  0.34,  0.77,  0.72
+ieng6-202   10:45:01   12  0.09,  0.26,  0.26
+ieng6-203   10:45:01   19  0.14,  0.20,  0.22
+
+ 
+
+To begin work for one of your courses [ cs15lwi24 ], type its name 
+at the command prompt.  (For example, "cs15lwi24", without the quotes).
+
+To see all available software packages, type "prep -l" at the command prompt,
+or "prep -h" for more options.
+[p1long@ieng6-202]:~:46$
+```
+
+---
+
+## Part 3: Reflection
+
+
+
+---
+
+I hope you enjoyed reading my lab report. To 7 more fun weeks of *CSE15L*!

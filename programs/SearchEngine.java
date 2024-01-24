@@ -1,6 +1,11 @@
+package programs;
 import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
+
+import Handler;
+import Server;
+import URLHandler;
 
 class Handler implements URLHandler {
 
@@ -44,7 +49,7 @@ class Handler implements URLHandler {
             }
         }
         // help message
-        else if (url.getPath().equals("help")) {
+        else if (url.getPath().equals("/help")) {
             return "Try add?s=<string> to add an entry. Try search?s=<string> to search for a certain substring within entries.";
         }
         // unknown argument
