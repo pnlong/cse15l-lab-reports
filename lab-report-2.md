@@ -97,8 +97,6 @@ This request calls the `handleRequest` method as well, which, as mentioned previ
 
 ## Part 2: SSH
 
-Observe the `.ssh` directory on my local drive:
-
 ```
 philliplong@Phillip-Longs-MacBook-Air ~ % pwd
 /Users/philliplong
@@ -106,6 +104,8 @@ philliplong@Phillip-Longs-MacBook-Air ~ % ls ~/.ssh
 config          id_ed25519      id_ed25519.pub  id_rsa          id_rsa.pub      known_hosts     known_hosts.old
 philliplong@Phillip-Longs-MacBook-Air ~ % ls /Users/philliplong/.ssh
 config          id_ed25519      id_ed25519.pub  id_rsa          id_rsa.pub      known_hosts     known_hosts.old
+philliplong@Phillip-Longs-MacBook-Air ~ % ls /Users/philliplong/.ssh/id_rsa
+/Users/philliplong/.ssh/id_rsa
 ```
 
 On my local drive, the absolute path of the *private* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa`.
@@ -117,6 +117,8 @@ On my local drive, the absolute path of the *private* `ssh` key for logging into
 authorized_keys
 [p1long@ieng6-203]:~:58$ ls /home/linux/ieng6/oce/69/p1long/.ssh
 authorized_keys
+[p1long@ieng6-203]:~:59$ ls /home/linux/ieng6/oce/69/p1long/.ssh/authorized_keys
+/home/linux/ieng6/oce/69/p1long/.ssh/authorized_keys
 ```
 
 On the `ieng6` server, the absolute path of the *public* `ssh` key for logging into `ieng6` is `/home/linux/ieng6/oce/69/p1long/.ssh/authorized_keys`.
