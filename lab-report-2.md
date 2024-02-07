@@ -108,9 +108,20 @@ philliplong@Phillip-Longs-MacBook-Air ~ % ls /Users/philliplong/.ssh
 config          id_ed25519      id_ed25519.pub  id_rsa          id_rsa.pub      known_hosts     known_hosts.old
 ```
 
-On my local drive...
-- the absolute path of the *private* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa`.
-- the absolute path of the *public* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa.pub`.
+On my local drive, the absolute path of the *private* `ssh` key for logging into `ieng6` is `/Users/philliplong/.ssh/id_rsa`.
+
+```
+[p1long@ieng6-203]:~:56$ pwd
+/home/linux/ieng6/oce/69/p1long
+[p1long@ieng6-203]:~:57$ ls ~/.ssh
+authorized_keys
+[p1long@ieng6-203]:~:58$ ls /home/linux/ieng6/oce/69/p1long/.ssh
+authorized_keys
+```
+
+On the `ieng6` server, the absolute path of the *public* `ssh` key for logging into `ieng6` is `/home/linux/ieng6/oce/69/p1long/.ssh/authorized_keys`.
+
+---
 
 Having set up my `ssh` keys, I can now easily log onto my `ieng6` account without entering my password! See below. _Note that I was **not** prompted for a password._
 
