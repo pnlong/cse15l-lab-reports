@@ -1,5 +1,7 @@
 # Lab Report 3
 
+## Bugs and Commands
+
 This week, I learned some more useful command line tools. I am also learning the art of debugging!
 
 ---
@@ -93,7 +95,7 @@ static void reverseInPlace(int[] arr) {
 
 The logic behind my fixes was to not loop over the entire array: rather, I would only loop over the first half of the array, and at each iteration, I would effectively swap "mirror" elements. Done correctly (without any unintentional overwrites), the bug would be fixed. This is best explained with an example. 
 
-> Say we have an array `{1,2,3,4,5}`. The first iteration of my for-loop, I swap elements `1` and `5`, making sure to temporarily save `1` so that I don't lose any information through overwriting. With the array now `{5,2,3,4,1}`, I swap elements `2` and `5`. The array is now `{5,4,3,2,1}`. The for-loop stops here, because as an array with odd-numbered length (5), there is no need to swap the middle element.
+> Say we have an array `{1,2,3,4,5}`. The first iteration of my for-loop, I swap elements `1` and `5`, making sure to temporarily save `1` so that I don't lose any information through overwriting. With the array now `{5,2,3,4,1}`, I swap elements `2` and `4`. The array is now `{5,4,3,2,1}`. The for-loop stops here, because as an array with odd-numbered length (5), there is no need to swap the middle element.
 
 ## Researching Commands: `grep`
 
