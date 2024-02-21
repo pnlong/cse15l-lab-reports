@@ -74,7 +74,7 @@ Tests run: 2,  Failures: 1
 
 **Keys Pressed**: `sh t<tab><enter>`
 
-My next step was to run the tester shell script. Already knowing the file structure of `lab7`, I simply entered `sh t` and then employed tab autocomplete to complete the filename, as I knew that `test.sh` was the only file that started with a `t`. Running this script showed my that out of my two tests, one of them was failing. I needed to get to work!
+My next step was to run the tester shell script. Already knowing the file structure of `lab7`, I simply entered `sh t` and then employed tab autocomplete to complete the filename, as I knew that `test.sh` was the only file that started with a `t`. Running this script showed me that out of my two tests, one of them was failing. I needed to get to work!
 
 ### Edit the Code, Make Bug Fixes
 
@@ -141,7 +141,7 @@ wq
 
 **Keys Pressed**: `vim L<tab>.j<tab><enter>43jer2:wq<enter>`
 
-To make edits to the repository's code base, I would need a command-line text editor: *Vim*! I entered `vim L` then used tab autocomplete to avoid typing out `ListExamples`. However, because there are multiple files in `lab7` that start with the pattern `ListExamples`, I needed to type `.j` to avoid matching both the `ListExamplesTests` files and `ListExamples.class` that was created by running the `test.sh` script. I then used tab autocomplete to avoid typing out the `.java` file type. I had now entered the *Vim* interface. Breaking down the *Vim* command, I jumped down to the 44th line (the line with the error) with `43j` and then jumped to the end of the first word of that line (`index1`) with `e`. This moved my cursor to the `1` character, which happened to be the exact character I needed to fix, so I then entered `r2` to replace the `1` with a `2`, fixing the bug. To save my work and exit *Vim*, I entered `:wq`, where `w` writes the file and `q` quits *Vim*.
+To make edits to the repository's code base, I would need a command-line text editor: *Vim*! I entered `vim L` then used tab autocomplete to avoid typing out `ListExamples`. However, because there are multiple files in `lab7` that start with the pattern `ListExamples`, I needed to type `.j` to avoid matching both the `ListExamplesTests` files and `ListExamples.class`, which was created previously by running the `test.sh` script. I then used tab autocomplete to avoid typing out the `.java` file type. I had now entered the *Vim* interface. Breaking down the *Vim* command, I jumped down to the 44th line (the line with the error) with `43j` and then jumped to the end of the first word of that line (`index1`) with `e`. This moved my cursor to the `1` character, which happened to be the exact character I needed to fix, so I then entered `r2` to replace the `1` with a `2`, fixing the bug. To save my work and exit *Vim*, I entered `:wq`, where `w` writes the file and `q` quits *Vim*.
 
 ### Rerun the Tests
 
