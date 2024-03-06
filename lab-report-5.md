@@ -14,18 +14,23 @@ Ahhh... We have reached the final lab report of CSE 15L. This week, I wrapped up
 > 
 > I am currently trying to work through the Week 8's lab, and when I try to run my testing script, `SemanticAnalysisHandlerTests` stalls and never finishes executing. I have entered the following commands into the command-line.
 >
+
 ```bash
 [p1long@ieng6-202]:chat-server-pro:284$ bash test.sh
 JUnit version 4.13.2
 .
 ```
+
 > This is my `test.sh` file:
+
 ```bash
 #!/bin/bash
 
+# compile and run my semantic analysis tests
 javac -encoding utf-8 -g -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar *.java 
 java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnitCore SemanticAnalysisHandlerTests
 ```
+
 > 
 > According to the lab instructions, this is the expected behavior. I suspect that somewhere underneath the hood, Java gets stuck in an infinite `while` loop. But I can't figure out where Java is getting stuck. I don't see anything unusual with the tester input, so I assume that the problem is not one with tester, but even deeper within the `handleRequest()` method.
 >
