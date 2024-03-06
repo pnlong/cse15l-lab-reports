@@ -73,7 +73,7 @@ Note that I am running `SemanticAnalysisHandlerTests.java`, but `handleRequest()
 
 The bug-inducing script.
 
-```java
+```bash
 #!/bin/bash
 
 # compile and run my semantic analysis tests
@@ -85,7 +85,7 @@ java -cp .:lib/hamcrest-core-1.3.jar:lib/junit-4.13.2.jar org.junit.runner.JUnit
 
 The tester program.
 
-```
+```java
 import static org.junit.Assert.*;
 import org.junit.*;
 import java.net.URI;
