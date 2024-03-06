@@ -268,7 +268,7 @@ JUnit version 4.13.2
 
 ### Bug Fix
 
-Within the inner-`while` loop of the `semantic-analysis` section of the `handleRequest()` method (found in `ChatServer.java`), the `characterIndex` variable, which is part of the `while` loop condition, never incremented. As a result, the program got stuck in an infinite while loop. I simply had to a single line at the end of the `while` loop clause (after the `if` statement ladder) that incremented `characterIndex` after each iteration:
+Within the inner-`while` loop of the `semantic-analysis` section of the `handleRequest()` method (found in `ChatServer.java`), the `characterIndex` variable, which is part of the `while` loop condition, never increments. As a result, the program got stuck in an infinite while loop. I simply had to a single line at the end of the `while` loop clause (after the `if` statement ladder) that incremented `characterIndex` after each iteration:
 
 ```java
 characterIndex++;
