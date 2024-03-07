@@ -65,7 +65,7 @@ ChatHistoryReader.class  ChatServer.java     SemanticAnalysisHandlerTests.class 
 ChatHistoryReader.java   HandlerTests.class  SemanticAnalysisHandlerTests.java   ServerHttpHandler.class  lib
 ```
 
-Note that I am running `SemanticAnalysisHandlerTests.java`, but `handleRequest()`, and thus the bug, is in `ChatServer.java`.
+Note that I am running `test.sh`, which invokes `SemanticAnalysisHandlerTests.java`, but `handleRequest()`, and thus the bug, is in `ChatServer.java`.
 
 #### File Contents Prior to Bug Fix
 
@@ -268,7 +268,7 @@ JUnit version 4.13.2
 
 ### Bug Fix
 
-Within the inner-`while` loop of the `semantic-analysis` section of the `handleRequest()` method (found in `ChatServer.java`), the `characterIndex` variable, which is part of the `while` loop condition, never increments. As a result, the program got stuck in an infinite while loop. I simply had to a single line at the end of the `while` loop clause (after the `if` statement ladder) that incremented `characterIndex` after each iteration:
+Within the inner-`while` loop of the `semantic-analysis` section of the `handleRequest()` method (found in `ChatServer.java`), the `characterIndex` variable, which is part of the `while` loop condition, never increments. As a result, the program gets stuck in an infinite `while` loop. I simply had to add a single line to the end of the `while` loop clause (after the `if` statement ladder) that incremented `characterIndex` after each iteration:
 
 ```java
 characterIndex++;
